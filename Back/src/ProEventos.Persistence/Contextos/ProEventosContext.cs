@@ -17,6 +17,7 @@ namespace ProEventos.Persistence.Contextos
         {
             modelBuilder.Entity<PalestranteEvento>()
                 .HasKey(PE => new {PE.EventoId, PE.PalestranteId});
+<<<<<<< Updated upstream
             
             modelBuilder.Entity<Evento>()
                 .HasMany(e => e.RedeSociais)
@@ -27,6 +28,8 @@ namespace ProEventos.Persistence.Contextos
                 .HasMany(p => p.RedesSociais)
                 .WithOne(rs => rs.Palestrante)
                 .OnDelete(DeleteBehavior.Cascade);
+=======
+>>>>>>> Stashed changes
         }
     }
 }
