@@ -7,7 +7,6 @@ using ProEventos.Persistence.Contratos;
 
 namespace ProEventos.Persistence
 {
-<<<<<<< Updated upstream
     public class EventoPersist : IEventoPersist
     {
         private readonly ProEventosContext _context;
@@ -18,17 +17,6 @@ namespace ProEventos.Persistence
         }
         
         public async Task<Evento[]> GetAllEventosAsync(bool includePalestrantes = false)
-=======
-    public class EventoPersistence : IEventoPersist
-    {
-        private readonly ProEventosContext _context;
-        public EventoPersistence(ProEventosContext context)
-        {
-            _context = context;
-        }
-        
-        public async Task<Evento[]> GetAllEventosByAsync(bool includePalestrantes = false)
->>>>>>> Stashed changes
         {
             IQueryable<Evento> query = _context.Eventos
                 .Include(e => e.Lotes)
@@ -40,11 +28,7 @@ namespace ProEventos.Persistence
                 .ThenInclude(pe => pe.Palestrante);
             }
 
-<<<<<<< Updated upstream
             query = query.AsNoTracking().OrderBy(e => e.Id);
-=======
-            query = query.OrderBy(e => e.Id);
->>>>>>> Stashed changes
 
             return await query.ToArrayAsync();
         }
@@ -61,11 +45,7 @@ namespace ProEventos.Persistence
                 .ThenInclude(pe => pe.Palestrante);
             }
 
-<<<<<<< Updated upstream
             query = query.AsNoTracking().OrderBy(e => e.Id)
-=======
-            query = query.OrderBy(e => e.Id)
->>>>>>> Stashed changes
                 .Where(e => e.Tema.ToLower()
                 .Contains(tema.ToLower()));
 
@@ -84,11 +64,7 @@ namespace ProEventos.Persistence
                 .ThenInclude(pe => pe.Palestrante);
             }
 
-<<<<<<< Updated upstream
             query = query.AsNoTracking().OrderBy(e => e.Id)
-=======
-            query = query.OrderBy(e => e.Id)
->>>>>>> Stashed changes
                 .Where(e => e.Id == EventoId);
 
             return await query.FirstOrDefaultAsync();
