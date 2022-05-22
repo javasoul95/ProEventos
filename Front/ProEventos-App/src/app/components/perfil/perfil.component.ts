@@ -11,10 +11,6 @@ export class PerfilComponent implements OnInit {
 
   form!: FormGroup;
 
-  public get f():any {
-    return this.form.controls;
-  }
-
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -39,7 +35,16 @@ export class PerfilComponent implements OnInit {
     }, formOptions);
   }
 
-  public formReset(): void {
+  public get f():any {return this.form.controls; }
+
+  onSubmit(): void{
+    if (this.form.invalid) {
+      return;
+    }
+  }
+
+  public formReset(event: any): void {
+    event.preventDefault();
     this.form.reset();
   }
 }
